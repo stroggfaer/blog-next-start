@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-//TODO server auth api;
+//TODO server auth api ;
 const isAuthenticated = true;
 
 export function middleware(request: NextRequest) {
