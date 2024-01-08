@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  padding: 0px;
+}
+.title {
+
+}
+.action {
+  margin: 0 0 0 auto;
+}
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 15px;
+  .name {
+     font-size: 14px;
+  }
+  .logout {
+    cursor: pointer;
+    @include ease();
+    opacity: 1;
+    &:hover {
+      opacity: .3;
+    }
+  }
+}

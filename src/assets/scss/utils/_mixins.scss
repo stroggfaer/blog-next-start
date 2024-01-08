@@ -1,0 +1,91 @@
+@mixin font-size($size, $line-height: null, $bold: normal) {
+  font-size: $size;
+  @if ($line-height == null) {
+    line-height: $size;
+  } @else {
+    line-height: $line-height;
+  }
+  font-weight: $bold;
+}
+
+@mixin ease($what: all, $time: 0.2s, $timeout: 0s, $how: ease-in-out) {
+  transition: $what $time $how $timeout;
+}
+
+@mixin link-color($color) {
+  text-decoration: none;
+  color: $color;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+  &.no_decoration {
+    text-decoration: none;
+  }
+}
+
+/* Scrollbar
+ -------------------------- */
+@mixin scrollBar {
+  $scrollbar-thumb-background: rgba(0, 0, 0, 0.36);
+  $scrollbar-track-background: #fff;
+
+  &::-webkit-scrollbar {
+    z-index: 11;
+    width: 4px;
+
+    &:horizontal {
+      height: 6px;
+    }
+
+    &-thumb {
+      border-radius: 5px;
+      width: 6px;
+      background: $scrollbar-thumb-background;
+    }
+
+    &-corner {
+      background: $scrollbar-track-background;
+    }
+
+    &-track {
+      background: $scrollbar-track-background;
+
+      &-piece {
+        background: $scrollbar-track-background;
+        width: 6px;
+      }
+    }
+  }
+}
+
+@mixin placeholder($color, $font-weight: 400, $font-size: 14px, $line-height: 20px) {
+  &::placeholder {
+    color: $color;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-family: "Roboto", sans-serif
+  }
+  &::-moz-placeholder {
+    color: $color;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-family: "Roboto", sans-serif
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-family: "Roboto", sans-serif
+  }
+  &::-webkit-input-placeholder {
+    color: $color;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-family: "Roboto", sans-serif
+  }
+}

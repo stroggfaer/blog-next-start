@@ -1,0 +1,14 @@
+.loginForm {
+   :global .ant-btn-primary {
+      width: 100%;
+   }
+   :global .space-between .ant-form-item-control-input-content {
+      display: flex;
+      justify-content: space-between;
+   }
+}
+.container {
+   width: 100%;
+   text-align: left;
+}
+

@@ -1,0 +1,27 @@
+h1 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 140%;
+  margin-bottom: 10px;
+}
+/*---Fonts---*/
+.font-12 {
+  font-size: 12px;
+}
+.font-16 {
+  font-size: 16px;
+}
+.font-32 {
+  font-size: 32px;
+}
+.text-grey {
+  color: $color-dark-grey
+}
+.text-center-flex {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
