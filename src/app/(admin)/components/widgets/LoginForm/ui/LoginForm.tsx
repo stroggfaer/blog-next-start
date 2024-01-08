@@ -4,17 +4,23 @@ import styles from './style.module.scss';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { FieldType } from "../types";
 import Link from "next/link";
-import {useAppDispatch, useAppSelector} from "@/store/store";
-import { setToken } from "@/store/redux/auth";
+import {useAppDispatch, useAppSelector} from "@/stores/store";
+import { setAuthToken } from "@/stores/redux/auth";
+import { useAuthStore } from "@/stores/hooks/useAuthStore";
+
 
 const LoginForm = () => {
-    const getToken = useAppSelector((state) => state.auth.token);
+    const { accessToken, refreshToken } = useAppSelector((state) => state.auth);
     const dispatch = useAppDispatch();
-
+    const { authLogin } = useAuthStore();
     const onSubmit = async (values: any) => {
-        console.log('Success:', values);
-        const token = '23423asdas';
-        await dispatch(setToken(token));
+        console.log('onSubmit Success:', values);
+        const body = {
+            username: values.username,
+            password:  values.password,
+        }
+        await authLogin(body);
+      //  await dispatch(setToken(token));
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -23,7 +29,8 @@ const LoginForm = () => {
 
     return (
         <div className={`${styles.container} ${styles.loginForm}`}>
-            +{getToken}+
+            accessToken: +{accessToken}+
+            refreshToken: +{refreshToken}+
             <Form
                 name="loginForm"
                 labelCol={{ span: 24 }}

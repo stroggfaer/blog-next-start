@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+
 //TODO server auth api ;
 const isAuthenticated = true;
 

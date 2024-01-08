@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import {useLayoutEffect} from "react";
 import { redirect } from 'next/navigation';
-
 export const metadata: Metadata = {
   title: 'Admin',
   description: '',

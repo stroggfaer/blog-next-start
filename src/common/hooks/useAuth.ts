@@ -10,7 +10,7 @@ export default function useAuth() {
 			okText: 'Confirm',
 			onOk() {
 				console.log('OK');
-				//await store.authLogout();
+				//await stores.authLogout();
 				// if(redirect) await router.push(redirect);
 			},
 			onCancel() {
