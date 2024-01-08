@@ -4,7 +4,7 @@ import {News} from "@/app/(admin)/components/widgets/News";
 
 // SSR;
 export const metadata: Metadata = {
-    title: 'Users',
+    title: 'News',
     description: '',
 }
 const dataFetch = [];

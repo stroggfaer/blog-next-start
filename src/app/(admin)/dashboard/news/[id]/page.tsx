@@ -4,7 +4,7 @@ import {NewsView} from "@/app/(admin)/components/widgets/News";
 
 // SSR;
 export const metadata: Metadata = {
-    title: 'News',
+    title: 'News Details ',
     description: '',
 }
 const view = {};
