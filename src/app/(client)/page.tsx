@@ -1,13 +1,9 @@
-
-import { Buttons } from "./components/Buttons";
+import LayoutClient from "@/app/(client)/components/content/Layout/LayoutClient";
 
 export default function Home() {
   return (
-    <main>
-       <div>
-           Home
-           <Buttons />
-       </div>
-    </main>
+    <LayoutClient>
+
+    </LayoutClient>
   )
 }

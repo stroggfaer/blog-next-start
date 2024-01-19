@@ -26,6 +26,7 @@ const LayoutAdmin = (props: PropsWithChildren<ChildProps>) => {
                         <Content style={{ margin: '24px 16px', padding: 24, minHeight: 280, background: colorBgContainer, borderRadius: borderRadiusLG}}>
                             {slots.children}
                         </Content>
+
                     </Layout>
                 </Suspense>
             </Layout>
