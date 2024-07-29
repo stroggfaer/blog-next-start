@@ -20,7 +20,7 @@ const LayoutAdmin = (props: PropsWithChildren<ChildProps>) => {
                 <Sidebar collapsed={collapsed}/>
                 <Suspense fallback={<Loading />}>
                     <Layout>
-                        <Headers theme={colorBgContainer} onClick={setCollapsed} title={props?.titleHeader}>
+                        <Headers theme={colorBgContainer} onClick={setCollapsed} title={props?.titleHeader || ''}>
                             <Slot name='header'>{slots.header}</Slot>
                         </Headers>
                         <Content style={{ margin: '24px 16px', padding: 24, minHeight: 280, background: colorBgContainer, borderRadius: borderRadiusLG}}>

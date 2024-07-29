@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     title: 'News',
     description: '',
 }
-const dataFetch = [];
+const dataFetch = [] as any[];
 
 const NewsPage = () => {
     return (
-       <><News dataFetch={dataFetch} /></>
+       <><News data={dataFetch} /></>
     );
 };
 

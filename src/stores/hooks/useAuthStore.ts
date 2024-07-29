@@ -1,9 +1,10 @@
 import { setAuthToken } from "@/stores/redux/auth";
-import { useAppSelector, store } from "@/stores/store";
+import { useAppSelector, store, wrapper } from "@/stores/store";
+import { AuthTokens } from "@/common/models";
 
 // TODO api store auth;
 export const useAuthStore = () => {
-   // const store = useAppStore();
+
     const getState = () => {
         return store.getState().auth;
     };
@@ -13,29 +14,28 @@ export const useAuthStore = () => {
     // Проверка токен;
     const authFetchToken = async () => {
         console.log('authFetchToken');
-        const {accessToken, refreshToken} = getState();
-        if(accessToken) {
+        const { accessToken, refreshToken } = getState();
+        if (accessToken) {
             console.log('accessToken', accessToken);
-        }else{
+        } else {
             authLogout();
         }
     };
 
     // Авторизация;
-    const authLogin = async ({ username, password }) => {
-        console.log('authLogin',username,password)
+    const authLogin = async ({ username, password }: any) => {
+        console.log('authLogin', username, password);
         // api;
 
         authSetToken({
             accessToken: '345dfgdfg34_accessToken',
             refreshToken: 'reterterte_refreshToken',
-        })
+        });
     };
 
     // Сохранить store/куки;
-    const authSetToken = ({ accessToken, refreshToken }) => {
-        //
-        store.dispatch(setAuthToken({accessToken, refreshToken}));
+    const authSetToken = ({ accessToken, refreshToken }: AuthTokens) => {
+        store.dispatch(setAuthToken({ accessToken, refreshToken }));
     };
 
     // выйти;
@@ -43,8 +43,9 @@ export const useAuthStore = () => {
         authSetToken({
             accessToken: null,
             refreshToken: null,
-        })
-    }
+        });
+    };
+
     return {
         state,
         getState,
@@ -52,5 +53,4 @@ export const useAuthStore = () => {
         authLogin,
         authLogout,
     };
-}
-
+};

@@ -1,19 +1,24 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector, useStore } from "react-redux";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import authReducer from "@/stores/redux/auth";
-import {createWrapper} from 'next-redux-wrapper';
+import { createWrapper } from 'next-redux-wrapper';
 
-export const store = configureStore({
-    reducer: {
-        auth: authReducer
-    },
-    devTools: true
-});
+const makeStore = () =>
+    configureStore({
+        reducer: {
+            auth: authReducer
+        },
+        devTools: true
+    });
 
-type RootState = ReturnType<typeof store.getState>;
-type AppDispatch = typeof store.dispatch;
+export type MakeStore = ReturnType<typeof makeStore>;
+
+type RootState = ReturnType<ReturnType<typeof makeStore>['getState']>;
+type AppDispatch = ReturnType<typeof makeStore>['dispatch'];
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-export const useAppStore: () => RootState = useStore
-export const wrapper = createWrapper<RootState>(useStore);
+export const wrapper = createWrapper<MakeStore>(makeStore);
+export const store = makeStore();
+
+

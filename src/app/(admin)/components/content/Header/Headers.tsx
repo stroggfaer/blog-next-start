@@ -24,6 +24,11 @@ const Headers = (props: PropsWithChildren<ChildProps>) => {
 
     const { logout } = useAuth();
 
+    const handleLogoutClick: React.MouseEventHandler<HTMLDivElement> = (event) => {
+        event.preventDefault();
+        logout();
+    };
+
     return (
         <Header style={{ background: props.theme, padding: '0px 24px 0px 0px'}} className={header}>
             <Button
@@ -37,7 +42,7 @@ const Headers = (props: PropsWithChildren<ChildProps>) => {
             <div className={style.user}>
                 <Avatar icon={<UserOutlined />} />
                 <div className={style.name}>Admin</div>
-                <div className={style.logout} onClick={logout}><LogoutOutlined /></div>
+                <div className={style.logout} onClick={handleLogoutClick}><LogoutOutlined /></div>
             </div>
         </Header>
     );

@@ -7,7 +7,9 @@ export const metadata: Metadata = {
     title: 'News Details ',
     description: '',
 }
-const view = {};
+const view = {
+    title: 'Test NewsView'
+};
 
 const NewsDetails = () => {
     return (

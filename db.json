@@ -1,0 +1,22 @@
+{
+  "blogs": [
+    {
+      "title": "title example1",
+      "content": "content example",
+      "author": "Your favorite author",
+      "id": 1
+    },
+    {
+      "title": "another title example",
+      "content": "more content example",
+      "author": "Your friend's favorite author",
+      "id": 2
+    },
+    {
+      "title": "title example number 3",
+      "content": "even better content",
+      "author": "me",
+      "id": 3
+    }
+  ]
+}

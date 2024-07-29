@@ -6,11 +6,11 @@ export const metadata: Metadata = {
     title: 'User View',
     description: '',
 }
-const view = {};
+const view = {} as any;
 
 const UsersDetails = () => {
     return (
-       <><UserView dataView={view}  /></>
+       <><UserView view={view}  /></>
     );
 };
 

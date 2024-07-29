@@ -1,7 +1,7 @@
 import {ReactElement, ReactNode} from "react";
 
 export interface SlotProps {
-    children: ReactNode,
+    children?: ReactNode,
     title?: ReactNode,
     name: string,
 }

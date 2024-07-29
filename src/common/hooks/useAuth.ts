@@ -3,7 +3,8 @@ import { Modal } from 'antd';
 export default function useAuth() {
 	const { confirm } = Modal;
     // Выйти
-	const logout = async (redirect: string = '') => {
+	const logout = (redirect?: string) => {
+		redirect = '';
 		confirm({
 			title: 'Are you sure you want to exit?',
 			content: 'The session will end and you will be taken to the login screen.',

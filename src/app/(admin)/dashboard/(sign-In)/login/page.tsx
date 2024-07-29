@@ -3,13 +3,15 @@ import style from "./page.module.scss";
 import {Metadata} from "next";
 import LayoutEmpty from "@/app/(admin)/components/content/Layout/LayoutEmpty";
 import { Slot } from "@/common/shared/slot";
-import {redirect} from "next/navigation";
+import {redirect, useRouter} from "next/navigation";
 export const metadata: Metadata = {
   title: 'Login Admin panel',
   description: '',
 }
 const isAuthenticated = true;
+
 export default function LoginPage() {
+
     if(isAuthenticated){
        // redirect("/dashboard")
     }

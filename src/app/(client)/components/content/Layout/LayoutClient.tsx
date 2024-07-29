@@ -5,9 +5,9 @@ import { Layout, theme } from 'antd';
 import {ChildProps} from "./types";
 import style from "./style.module.scss";
 import Headers from "@/app/(client)/components/content/Header/Headers";
+import FooterComponent from "@/app/(client)/components/content/Footer/FooterComponent";
 const LayoutClient = (props: PropsWithChildren<ChildProps>) => {
-    const { Content, Footer } = Layout;
-    //const {children, classList, titleHeader } = props;
+    const { Content } = Layout;
     const slots = useSlot(props.children);
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const { token: { colorBgContainer, borderRadiusLG },} = theme.useToken();
@@ -19,9 +19,7 @@ const LayoutClient = (props: PropsWithChildren<ChildProps>) => {
             <Content style={{ margin: '24px 16px', padding: 24, minHeight: 280, background: colorBgContainer, borderRadius: borderRadiusLG}}>
                 {slots.children}
             </Content>
-            <Footer style={{ textAlign: 'center' }}>
-                Ant Design ©{new Date().getFullYear()} Created by Ant UED
-            </Footer>
+            <FooterComponent />
         </Layout>
     );
 };
