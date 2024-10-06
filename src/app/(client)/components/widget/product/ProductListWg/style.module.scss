@@ -1,0 +1,86 @@
+.product_card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  width: 243px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0);
+  position: relative;
+  @include ease();
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  /* Лидер продаж */
+  .leader_badge {
+    background-color: $color-orange;
+    color: white;
+    font-size: 14px;
+    padding: 4px 8px;
+    left: 0px;
+    position: absolute;
+    top: 15px;
+  }
+  /* Изображение товара */
+  .images {
+    width: 170px;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: auto;
+    }
+    margin: 15px auto;
+  }
+
+  /* Название товара */
+  h3 {
+    font-size: 16px;
+    margin: 8px 0;
+    font-weight: 400;
+  }
+
+  /* Описание (кол-во, формат) */
+  .tags {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .tag {
+       @include fontSizeText(14px, 17px, 300);
+       color: $color-black-medium;
+    }
+  }
+
+  .block {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    @include fontSizeText(12px, 14px, 300);
+  }
+
+  /* Цена */
+  .price {
+    @include fontSizeText(24px, 24px, 400);
+    margin: 15px 0;
+  }
+
+  /* Кнопка покупки */
+  :global {
+    .ant-btn {
+      width: 100%;
+    }
+  }
+
+  /* Звезда избранного */
+  .favorite {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+  }
+
+  .favorite:hover {
+    color: #ff7f0e;
+  }
+
+}

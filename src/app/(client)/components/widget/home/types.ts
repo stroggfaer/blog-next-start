@@ -1,0 +1,3 @@
+interface HomeWgProps {
+    title?: string,
+}

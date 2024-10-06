@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AuthTokens } from "@/common/models";
+import { AuthTokens } from "@/common/types";
 
 // type
 interface State {

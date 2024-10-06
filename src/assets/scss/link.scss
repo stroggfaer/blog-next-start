@@ -1,0 +1,10 @@
+.link {
+  @include ease();
+  cursor: pointer;
+  &.border {
+     border-bottom: 1px solid;
+    &:hover {
+      border-bottom-color: transparent;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { setAuthToken } from "@/stores/redux/auth";
 import { useAppSelector, store, wrapper } from "@/stores/store";
-import { AuthTokens } from "@/common/models";
+import { AuthTokens } from "@/common/types";
 
 // TODO api store auth;
 export const useAuthStore = () => {

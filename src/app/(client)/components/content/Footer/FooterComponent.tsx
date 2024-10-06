@@ -1,12 +1,10 @@
-import {Layout} from "antd";
-
-const { Footer: Footer } = Layout;import React from 'react';
-
 const FooterComponent = () => {
     return (
-        <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
+        <div className={'layout_footer'}>
+            <div className={'layout_container'}>
+                {/*Ant Design ©{new Date().getFullYear()} Created by Ant UED*/}
+            </div>
+        </div>
     );
 };
 

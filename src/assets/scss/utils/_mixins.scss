@@ -89,3 +89,8 @@
     font-family: "Roboto", sans-serif
   }
 }
+@mixin fontSizeText($size: 14px, $line-height: 20px, $bold: 400 ) {
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $bold;
+}

@@ -1,27 +1,39 @@
 h1 {
-  font-weight: 600;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 30px;
   line-height: 140%;
   margin-bottom: 10px;
 }
+h2 {
+  @include fontSizeText(28px, 30px, 500);
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+h3 {
+  @include fontSizeText(24px, 27px, 500);
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+.title_h1 {
+  @include fontSizeText(30px, 35px, 500);
+}
 /*---Fonts---*/
-.font-12 {
+.font_12 {
   font-size: 12px;
 }
-.font-16 {
-  font-size: 16px;
+.font_16 {
+  @include fontSizeText(16px, 17px);
 }
-.font-32 {
-  font-size: 32px;
+.font_24 {
+  @include fontSizeText(24px, 28.13px);
 }
 .text-grey {
-  color: $color-dark-grey
+  color: $color-link-grey;
 }
-.text-center-flex {
-  display: flex;
-  justify-items: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  text-align: center;
+.text-green {
+  color: $color-green;
+}
+
+p {
+  padding-bottom: 10px;
 }

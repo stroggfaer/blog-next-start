@@ -1,0 +1,43 @@
+.product_detail {
+  display: flex;
+  gap: 20px;
+}
+.image {
+  height: 350px;
+  background: $color-grey;
+  width: 50%;
+}
+.detail {
+  width: 50%;
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  .tag {
+    @include fontSizeText(16px, 17px, 300);
+    color: $color-black-medium;
+  }
+}
+
+.block {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  @include fontSizeText(16px, 14px, 300);
+}
+
+/* Цена */
+.price {
+  @include fontSizeText(24px, 24px, 400);
+  margin: 15px 0;
+}
+.description {
+  color: $color-black-medium;
+  padding: 8px 0px;
+}
+.info {
+  padding: 20px 0px;
+}

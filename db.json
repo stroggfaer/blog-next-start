@@ -18,5 +18,241 @@
       "author": "me",
       "id": 3
     }
+  ],
+
+  "clubs": [
+    {
+      "id": 1001,
+      "title": "К. Макса 2",
+      "schedules_id": 10001
+    }
+  ],
+  "trainers": [
+    {
+      "id": 1,
+      "title": "Баранова А.А",
+      "text": "Обо мне"
+    }
+  ],
+  "areas": [
+    {
+      "id": 3,
+      "title": "Йога",
+      "text": "Text..."
+    }
+  ],
+  "schedules": [
+    {
+      "id": 10001,
+      "club_id": 1001,
+      "week": 1,
+      "time_start": "10:30",
+      "time_end": "11:30",
+      "area_id": 3,
+      "trainer_id": 1
+    }
+  ],
+
+  "products": [
+    {
+      "id": 1,
+      "title": "Кирпич облицовочный M95 Воткинский",
+      "image_url": "https://api.slingacademy.com/public/sample-photos/1.jpeg",
+      "tags": ["Лидер продаж"],
+      "description": "Кирпич облицовочный с высокой прочностью и морозостойкостью, используется для внешней отделки зданий.",
+      "specifications": {
+        "quantity_per_pallet": 297,
+        "format": "одинарный"
+      },
+      "delivery": {
+        "is_free": true,
+        "availability": "в наличии"
+      },
+      "price": {
+        "value": 4500,
+        "currency": "₽",
+        "unit": "шт"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Блок керамический КБ 8",
+      "image_url": "https://api.slingacademy.com/public/sample-photos/2.jpeg",
+      "tags": [],
+      "description": "Керамический блок для строительства стен, обладающий хорошей теплоизоляцией.",
+      "specifications": {
+        "quantity_per_pallet": 128,
+        "format": "крупноформатный"
+      },
+      "delivery": {
+        "is_free": false,
+        "availability": "в наличии"
+      },
+      "price": {
+        "value": 3000,
+        "currency": "₽",
+        "unit": "шт"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Цемент М500",
+      "image_url": "https://api.slingacademy.com/public/sample-photos/3.jpeg",
+      "tags": ["Акция"],
+      "description": "Цемент марки М500 для общестроительных работ и заливки фундамента.",
+      "specifications": {
+        "quantity_per_pallet": 50,
+        "format": "мешок 50 кг"
+      },
+      "delivery": {
+        "is_free": true,
+        "availability": "ограничено"
+      },
+      "price": {
+        "value": 250,
+        "currency": "₽",
+        "unit": "мешок"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Кровельный шифер",
+      "image_url": "https://api.slingacademy.com/public/sample-photos/4.jpeg",
+      "tags": ["Хит продаж"],
+      "description": "Кровельный шифер для защиты крыши от осадков и ветра.",
+      "specifications": {
+        "quantity_per_pallet": 50,
+        "format": "лист"
+      },
+      "delivery": {
+        "is_free": true,
+        "availability": "в наличии"
+      },
+      "price": {
+        "value": 700,
+        "currency": "₽",
+        "unit": "лист"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Утеплитель Минвата 100мм",
+      "image_url": "https://api.slingacademy.com/public/sample-photos/5.jpeg",
+      "tags": ["Лучшая цена"],
+      "description": "Минеральная вата для утепления стен и потолков, толщиной 100 мм.",
+      "specifications": {
+        "quantity_per_pallet": 100,
+        "format": "рулон"
+      },
+      "delivery": {
+        "is_free": false,
+        "availability": "в наличии"
+      },
+      "price": {
+        "value": 1200,
+        "currency": "₽",
+        "unit": "рулон"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Пескобетон М300",
+      "image_url": "https://api.slingacademy.com/public/sample-photos/6.jpeg",
+      "tags": ["Акция"],
+      "description": "Пескобетон для заливки стяжек и выравнивания полов.",
+      "specifications": {
+        "quantity_per_pallet": 40,
+        "format": "мешок 40 кг"
+      },
+      "delivery": {
+        "is_free": false,
+        "availability": "ограничено"
+      },
+      "price": {
+        "value": 180,
+        "currency": "₽",
+        "unit": "мешок"
+      }
+    },
+    {
+      "id": 7,
+      "title": "Гипсокартон Лист 9,5 мм",
+      "image_url": "https://api.slingacademy.com/public/sample-photos/7.jpeg",
+      "tags": ["Новинка"],
+      "description": "Гипсокартон для внутренних отделочных работ, толщиной 9,5 мм.",
+      "specifications": {
+        "quantity_per_pallet": 20,
+        "format": "лист"
+      },
+      "delivery": {
+        "is_free": true,
+        "availability": "в наличии"
+      },
+      "price": {
+        "value": 600,
+        "currency": "₽",
+        "unit": "лист"
+      }
+    },
+    {
+      "id": 8,
+      "title": "Арматура А500С 12 мм",
+      "image_url": "https://api.slingacademy.com/public/sample-photos/8.jpeg",
+      "tags": ["Популярный товар"],
+      "description": "Арматура диаметром 12 мм для армирования бетона и железобетонных конструкций.",
+      "specifications": {
+        "quantity_per_pallet": 100,
+        "format": "метр"
+      },
+      "delivery": {
+        "is_free": false,
+        "availability": "в наличии"
+      },
+      "price": {
+        "value": 80,
+        "currency": "₽",
+        "unit": "метр"
+      }
+    },
+    {
+      "id": 9,
+      "title": "Плитка тротуарная",
+      "image_url": "https://api.slingacademy.com/public/sample-photos/9.jpeg",
+      "tags": ["Хит продаж"],
+      "description": "Тротуарная плитка для укладки дорожек и площадок.",
+      "specifications": {
+        "quantity_per_pallet": 200,
+        "format": "штука"
+      },
+      "delivery": {
+        "is_free": true,
+        "availability": "в наличии"
+      },
+      "price": {
+        "value": 50,
+        "currency": "₽",
+        "unit": "штука"
+      }
+    },
+    {
+      "id": 10,
+      "title": "Керамзит фасованный 50 л",
+      "image_url": "https://api.slingacademy.com/public/sample-photos/10.jpeg",
+      "tags": ["Лидер продаж"],
+      "description": "Керамзит для теплоизоляции полов, стен и крыш.",
+      "specifications": {
+        "quantity_per_pallet": 30,
+        "format": "мешок"
+      },
+      "delivery": {
+        "is_free": false,
+        "availability": "в наличии"
+      },
+      "price": {
+        "value": 350,
+        "currency": "₽",
+        "unit": "мешок"
+      }
+    }
   ]
 }

@@ -3,24 +3,46 @@ import React, {PropsWithChildren, useState, Suspense} from 'react';
 import {Slot, useSlot} from "@/common/shared/slot";
 import { Layout, theme } from 'antd';
 import {ChildProps} from "./types";
-import style from "./style.module.scss";
 import Headers from "@/app/(client)/components/content/Header/Headers";
 import FooterComponent from "@/app/(client)/components/content/Footer/FooterComponent";
+import { ConfigProvider } from 'antd';
+import {themeCustom} from "@/app/(client)/components/content/Layout/theme";
+import { Hydrate } from 'react-query/hydration'
+
+import {
+    QueryClient,
+    QueryClientProvider,
+} from 'react-query'
+
 const LayoutClient = (props: PropsWithChildren<ChildProps>) => {
     const { Content } = Layout;
-    const slots = useSlot(props.children);
-    const [collapsed, setCollapsed] = useState<boolean>(false);
-    const { token: { colorBgContainer, borderRadiusLG },} = theme.useToken();
-
+    const { children, dehydratedState } = props;
+    const queryClientOpt = {
+        defaultOptions: {
+            queries: {
+                suspense: true, //TODO осторожно можеь вызвать бесконечный цикл без Suspense
+            },
+        }
+    }
+    const slots = useSlot(children);
+    const [queryClient] = React.useState(() => new QueryClient(queryClientOpt));
     return (
-        <Layout className={`${props?.classList || ''} `} style={{height: '100%'}}>
-            {/*<Slot name='header'>{slots.header}</Slot>*/}
-            <Headers theme={colorBgContainer} onClick={setCollapsed} title={props?.titleHeader}/>
-            <Content style={{ margin: '24px 16px', padding: 24, minHeight: 280, background: colorBgContainer, borderRadius: borderRadiusLG}}>
-                {slots.children}
-            </Content>
-            <FooterComponent />
-        </Layout>
+        <QueryClientProvider client={queryClient}>
+            <Hydrate state={dehydratedState}>
+                <ConfigProvider theme={themeCustom}>
+                    <Layout className={`${props?.classList || ''} `} style={{height: '100%'}}>
+                        {/*<Slot name='header'>{slots.header}</Slot>*/}
+                        <Headers title={props?.titleHeader || ''}/>
+                        <Content className={'layout_container'}>
+                            <Suspense fallback={<div>Загрузка...</div>}>
+                                {slots.children}
+                            </Suspense>
+                        </Content>
+                        <FooterComponent />
+                    </Layout>
+                </ConfigProvider>
+            </Hydrate>
+        </QueryClientProvider>
     );
 };
 
