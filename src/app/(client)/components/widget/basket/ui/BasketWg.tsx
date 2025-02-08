@@ -6,6 +6,7 @@ import {DeleteOutlined} from "@ant-design/icons";
 import {useBasketStore} from "@/stores/hooks/useBasketStore.ts";
 import {PriceType, Product, ProductBasket, QuantityType} from "@/common/types";
 import {BasketAdd} from "@/app/(client)/components/ui/basketAdd/BasketAdd.tsx";
+import Link from "next/link";
 
 export const BasketWg: React.FC<BasketWgProps> = ({ ...props }) => {
 
@@ -39,7 +40,7 @@ export const BasketWg: React.FC<BasketWgProps> = ({ ...props }) => {
             dataIndex: 'title',
             key: 'title',
             render: (text: string, product: ProductBasket, index: number) => {
-                return text;
+                return ( <Link href={`/product/${product.id}`}>{text}</Link>);
             },
         },
         {
@@ -93,7 +94,7 @@ export const BasketWg: React.FC<BasketWgProps> = ({ ...props }) => {
             <Table columns={columns} dataSource={productData} pagination={false} size={"small"} bordered={true}/>
             <div className={styles.total}><b>Всего:</b> {basket.total} ₽</div>
             <div className={styles.action}>
-                <Button className={styles.checkoutBtn} type="primary" disabled={false} loading={false}
+                <Button className={styles.checkoutBtn} type="primary" disabled={!Boolean(productData.length)} loading={false}
                         onClick={onSubmit} size={"large"}>Оформить</Button>
             </div>
 

@@ -7,7 +7,7 @@ import {colors} from "@/app/(client)/components/content/Layout/theme";
 import {BasketAdd} from "@/app/(client)/components/ui/basketAdd/BasketAdd";
 import {ProductCardProps} from "@/app/(client)/components/widget/product/types";
 import { Image } from 'antd';
-import {useBasketStore} from "@/stores/hooks/useBasketStore.ts";
+import {useBasketStore} from "@/stores/hooks/useBasketStore";
 import {BasketParams, Product} from "@/common/types";
 
 export const ProductCard: React.FC<ProductCardProps> = ({ ...props }) => {
@@ -17,6 +17,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ ...props }) => {
     const onBasket = (product: Product, counts: number) => {
         setBasket({product, counts});
     }
+
     const tags = props.product.tags ?? [];
 
     return (

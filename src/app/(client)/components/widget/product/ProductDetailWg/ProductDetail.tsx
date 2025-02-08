@@ -3,23 +3,19 @@ import React from "react";
 import styles from "./style.module.scss";
 import {BasketAdd} from "@/app/(client)/components/ui/basketAdd/BasketAdd";
 import {ProductDetailProps} from "@/app/(client)/components/widget/product/types";
-import {getProductById} from "@/common/api/publicApi";
-import { useQuery } from "react-query";
 import {useProduct} from "@/common/hooks/useQueryApi";
-import { Image } from 'antd';
+import {useBasketStore} from "@/stores/hooks/useBasketStore";
 import {Product} from "@/common/types";
-
 
 export const ProductDetail: React.FC<ProductDetailProps> = ({ ...props }) => {
     const {product, productLoading, productError } = useProduct(
         props.slug,
         {
-            enabled: false,
-            initialData: props.initialProduct  || null
+            initialData: props.initialProduct  || undefined
         });
-
-    const onBasket = (product: Product, e) => {
-        console.log('onBasket',product);
+    const { setBasket } = useBasketStore();
+    const onBasket = (product: Product, counts: number) => {
+        setBasket({product, counts});
     }
 
     // Обработка ошибки;
@@ -48,7 +44,10 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ ...props }) => {
 
                <div className={styles.price}>{product.price.value} {product.price.currency} / {product.price.unit}</div>
 
-               <BasketAdd onBasket={(e)=> onBasket(product, e)} />
+               <BasketAdd
+                   product={product}
+                   onBasket={(event, counts) => onBasket(event, counts)}
+               />
 
                <div className={styles.info}>
                    <h3>Описание</h3>
