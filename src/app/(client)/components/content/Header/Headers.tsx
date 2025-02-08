@@ -1,13 +1,12 @@
+"use client"
 import React, { useState, useEffect, PropsWithChildren } from 'react';
 import {
     FileTextOutlined,
     HomeOutlined,
-    LogoutOutlined,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
     UserOutlined
 } from '@ant-design/icons';
-import {Layout, Button, Avatar, Menu, Badge} from 'antd';
+import { Badge} from 'antd';
+import { useRouter } from 'next/router';
 import {useSlot} from "@/common/shared/slot";
 import styles from "./style.module.scss";
 import { ChildProps } from "./types";
@@ -15,42 +14,19 @@ import useAuth from "@/common/hooks/useAuth";
 import Link from "next/link";
 import {IconsSvg} from "@/app/(client)/components/ui/IconsSvg/IconsSvg";
 import {colors} from "@/app/(client)/components/content/Layout/theme";
+import {Navigation} from "@/app/(client)/components/widget/navigation/Navigation";
+import {useBasketStore} from "@/stores/hooks/useBasketStore.ts";
 
 const Headers = (props: PropsWithChildren<ChildProps>) => {
     const slots = useSlot(props.children);
     const { logout } = useAuth();
-    const navigationsItems = [
-        {
-            link: '/services',
-            icon: <HomeOutlined />,
-            label: 'Услуги',
-        },
-        {
-            link: '/delivery',
-            icon: <UserOutlined />,
-            label: 'Доставка',
-        },
-        {
-            link: '/payment',
-            icon: <FileTextOutlined />,
-            label: 'Оплата',
-        },
-        {
-            link: '/projects',
-            icon: <FileTextOutlined />,
-            label: 'Проекты',
-        },
-    ];
+    const { state } = useBasketStore();
     return (
        <div className={'layout_header'}>
           <div className={'layout_container'}>
               <div  className={styles.layout_container_wrap}>
                   <Link  className={styles.logo} href={'/'}><div>Logo</div></Link>
-                  <div className={styles.navigation}>
-                      {navigationsItems.map((nav, k) => (
-                          <Link key={k} className={`link ${styles.active}`}  href={nav.link}>{nav.label}</Link>
-                      ))}
-                  </div>
+                  <Navigation />
                   <div className={styles.block_flex}>
                       <Link href={'/favorites'}>
                           <div className={'favorite'}>
@@ -59,7 +35,7 @@ const Headers = (props: PropsWithChildren<ChildProps>) => {
                       </Link>
                       <Link href={'/basket'}>
                           <div className={'cart'}>
-                              <Badge count={5} color={colors.colorPrimary}>
+                              <Badge count={state.basket.productsCounts} color={colors.colorPrimary} showZero>
                                   <IconsSvg name={'cart'} color={colors.colorPrimary} width={27} height={27} />
                               </Badge>
                           </div>

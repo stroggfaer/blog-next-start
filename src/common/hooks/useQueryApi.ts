@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from 'react-query';
-import {getProductById, getProducts} from "@/common/api/publicApi";
-import {Product, UseProductResult } from "@/common/types";
+import { getProductById, getProducts } from "@/common/api/publicApi";
+import { Product } from "@/common/types";
 
 export function useProducts() {
 
@@ -13,7 +13,7 @@ export function useProducts() {
         queryFn: getProducts,
     });
     const productsList = products ? products as Product[] : [];
-    console.log(productsList);
+
     return {
         productsList,
         productsError,
@@ -29,7 +29,6 @@ export function useProduct(
         queryKey: ['productDetail', slug],
         queryFn: () => getProductById(slug),
         select: (data) => data, // можно трасформировать
-        enabled: !!slug,
         ...opt,
     });
 

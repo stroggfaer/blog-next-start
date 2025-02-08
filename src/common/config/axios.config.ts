@@ -1,6 +1,6 @@
 import axios, { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 const baseURL = process.env.PUBLIC_API || '';
-console.log('baseURL PUBLIC_API', baseURL);
+
 const api = axios.create();
 
 api.defaults.baseURL = baseURL;

@@ -13,8 +13,9 @@ import {
     QueryClient,
     QueryClientProvider,
 } from 'react-query'
+import {SpinContent} from "@/app/(client)/components/ui/SpinContent";
 
-const LayoutClient = (props: PropsWithChildren<ChildProps>) => {
+const LayoutClient = (props: PropsWithChildren<ChildProps>)  => {
     const { Content } = Layout;
     const { children, dehydratedState } = props;
     const queryClientOpt = {
@@ -34,7 +35,7 @@ const LayoutClient = (props: PropsWithChildren<ChildProps>) => {
                         {/*<Slot name='header'>{slots.header}</Slot>*/}
                         <Headers title={props?.titleHeader || ''}/>
                         <Content className={'layout_container'}>
-                            <Suspense fallback={<div>Загрузка...</div>}>
+                            <Suspense fallback={SpinContent()}>
                                 {slots.children}
                             </Suspense>
                         </Content>

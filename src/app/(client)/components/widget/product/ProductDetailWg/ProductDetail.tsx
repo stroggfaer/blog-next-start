@@ -6,17 +6,22 @@ import {ProductDetailProps} from "@/app/(client)/components/widget/product/types
 import {getProductById} from "@/common/api/publicApi";
 import { useQuery } from "react-query";
 import {useProduct} from "@/common/hooks/useQueryApi";
+import { Image } from 'antd';
+import {Product} from "@/common/types";
+
 
 export const ProductDetail: React.FC<ProductDetailProps> = ({ ...props }) => {
     const {product, productLoading, productError } = useProduct(
         props.slug,
         {
+            enabled: false,
             initialData: props.initialProduct  || null
         });
-    console.log('data',product?.price);
-    const onBasket = (val: any) => {
-        console.log('onBasket',val);
+
+    const onBasket = (product: Product, e) => {
+        console.log('onBasket',product);
     }
+
     // Обработка ошибки;
     if (productLoading) return <div>Загрузка...</div>;
     if (productError) return <div>Ошибка: {productError.message}</div>;
@@ -43,7 +48,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ ...props }) => {
 
                <div className={styles.price}>{product.price.value} {product.price.currency} / {product.price.unit}</div>
 
-               <BasketAdd onBasket={(val)=> onBasket(val)} />
+               <BasketAdd onBasket={(e)=> onBasket(product, e)} />
 
                <div className={styles.info}>
                    <h3>Описание</h3>

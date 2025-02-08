@@ -1,0 +1,19 @@
+.navigation {
+   display: flex;
+   margin: auto;
+   gap: 0 90px;
+   height: 100%;
+   a {
+      color: $color-black-medium;
+      @include fontSizeText(18px,20px);
+      @include ease();
+      &:hover {
+         color: $color-black-medium;
+         opacity: 0.6;
+      }
+      &.active {
+         border-bottom: 1px solid;
+         color: $color-blue-normal;
+      }
+   }
+}

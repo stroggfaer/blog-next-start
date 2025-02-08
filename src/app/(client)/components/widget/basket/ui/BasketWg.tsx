@@ -3,31 +3,34 @@ import React from "react";
 import styles from "./style.module.scss";
 import {Button, Table, Image} from "antd";
 import {DeleteOutlined} from "@ant-design/icons";
+import {useBasketStore} from "@/stores/hooks/useBasketStore.ts";
+import {PriceType, Product, ProductBasket, QuantityType} from "@/common/types";
+import {BasketAdd} from "@/app/(client)/components/ui/basketAdd/BasketAdd.tsx";
 
 export const BasketWg: React.FC<BasketWgProps> = ({ ...props }) => {
-    const onBasketRemove = (val: any) => {
-      console.log('onBasketRemove',val);
+
+    const { getState, setBasket, removeBasket } = useBasketStore();
+
+    const { basket } = getState();
+
+    const onBasketRemove = (product: ProductBasket) => {
+        removeBasket(product);
     }
     const onSubmit = () => {
         console.log('onSubmit');
-    }
-    interface DataType {
-        key?: number;
-        title?: string;
-        age?: number;
-        address?: string;
     }
 
     const columns = [
         {
             title: '',
-            dataIndex: 'img',
-            key: 'img',
+            dataIndex: 'image_url',
+            key: 'image_url',
             width: 65,
-            render: (text: string, record: any, index: number) => {
+            render: (img: string, product: ProductBasket, index: number) => {
                 return ( <Image
+                    key={index}
                     width={60}
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    src={img}
                 />)
             },
         },
@@ -35,32 +38,36 @@ export const BasketWg: React.FC<BasketWgProps> = ({ ...props }) => {
             title: 'Название',
             dataIndex: 'title',
             key: 'title',
-            render: (text: string, record: any, index: number) => {
+            render: (text: string, product: ProductBasket, index: number) => {
                 return text;
             },
         },
         {
             title: 'Количество',
-            dataIndex: 'count',
-            key: 'count',
-            render: (text: string, record: any, index: number) => {
-                return text;
+            dataIndex: 'quantity',
+            key: 'quantity',
+            render: (quantity: QuantityType, product: ProductBasket, index: number) => {
+                return (<BasketAdd
+                    key={index}
+                    product={product}
+                    onBasket={(event, counts) => onBasket(event, counts)}
+                />)
             },
         },
         {
             title: 'Цена за шт.',
             dataIndex: 'price',
             key: 'price',
-            render: (text: string, record: any, index: number) => {
-                return text;
+            render: (price: PriceType, product: ProductBasket, index: number) => {
+                return `${price.value} ${price.currency}`;
             },
         },
         {
             title: 'Всего',
             dataIndex: 'total',
             key: 'total',
-            render: (text: string, record: any, index: number) => {
-                return text;
+            render: (total: number, product: ProductBasket, index: number) => {
+                return `${total} ${product.price.currency}`;
             },
         },
         {
@@ -69,39 +76,27 @@ export const BasketWg: React.FC<BasketWgProps> = ({ ...props }) => {
             align: 'center',
             dataIndex: 'action',
             key: 'action',
-            render: (text: string, record: any, index: number) => {
-                return ( <Button type="link" onClick={onBasketRemove} icon={<DeleteOutlined />}  />)
+            render: (text: string, product: ProductBasket, index: number) => {
+                return ( <Button type="link" onClick={() => onBasketRemove(product)} icon={<DeleteOutlined />}  />)
             },
         },
     ] as any[];
 
-    const data: DataType[] = [
-        {
-            key: 1,
-            title: 'John Brown',
-            age: 32,
-            address: 'New York No. 1 Lake Park',
-        },
-        {
-            key: 2,
-            title: 'John Brown',
-            age: 32,
-            address: 'New York No. 1 Lake Park',
-        },
-        {
-            key: 3,
-            title: 'John Brown',
-            age: 32,
-            address: 'New York No. 1 Lake Park',
-        },
-    ];
-    return (
-       <div className={styles.basket_wg}>
-           <Table columns={columns} dataSource={data} pagination={false} size={"small"} bordered={true} />
-           <div className={styles.action}>
-               <Button className={styles.checkoutBtn} type="primary" disabled={false} loading={false} onClick={onSubmit} size={"large"}>Оформить</Button>
-           </div>
+    const productData: ProductBasket[] = basket.products;
 
-       </div>
+    const onBasket = (product: ProductBasket, counts: number) => {
+        setBasket({product, counts});
+    }
+
+    return (
+        <div className={styles.basket_wg}>
+            <Table columns={columns} dataSource={productData} pagination={false} size={"small"} bordered={true}/>
+            <div className={styles.total}><b>Всего:</b> {basket.total} ₽</div>
+            <div className={styles.action}>
+                <Button className={styles.checkoutBtn} type="primary" disabled={false} loading={false}
+                        onClick={onSubmit} size={"large"}>Оформить</Button>
+            </div>
+
+        </div>
     );
 };

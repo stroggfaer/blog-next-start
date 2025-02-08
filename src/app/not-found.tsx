@@ -1,6 +1,7 @@
 import {Metadata} from "next";
 import LayoutClient from "@/app/(client)/components/content/Layout/LayoutClient";
 import Link from "next/link";
+
 // SSR;
 export const metadata: Metadata = {
     title: '404',
@@ -9,13 +10,16 @@ export const metadata: Metadata = {
 
 const NotFound = () => {
     return (
-        <div style={styles.container}>
-            <h1 style={styles.title}>404 - Страница не найдена</h1>
-            <p style={styles.message}>К сожалению, запрашиваемая страница не найдена.</p>
-            <Link href="/" style={styles.link}>
-                Вернуться на главную
-            </Link>
-        </div>
+        <LayoutClient>
+            <div style={styles.container}>
+                <h1 style={styles.title}>404 - Страница не найдена</h1>
+                <p style={styles.message}>К сожалению, запрашиваемая страница не найдена.</p>
+                <Link href="/" style={styles.link}>
+                    Вернуться на главную
+                </Link>
+            </div>
+        </LayoutClient>
+
     );
 };
 
@@ -25,7 +29,7 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh',
+        height: '50vh',
         textAlign: 'center',
     },
     title: {

@@ -72,6 +72,13 @@
         "value": 4500,
         "currency": "₽",
         "unit": "шт"
+      },
+      "quantity": {
+        "min_count": 1,
+        "max_count": 32,
+        "counts": 1,
+        "step_count": 3,
+        "default_count": 1
       }
     },
     {
@@ -92,6 +99,13 @@
         "value": 3000,
         "currency": "₽",
         "unit": "шт"
+      },
+      "quantity": {
+        "min_count": 1,
+        "max_count": 32,
+        "counts": 1,
+        "step_count": 1,
+        "default_count": 1
       }
     },
     {
@@ -112,6 +126,13 @@
         "value": 250,
         "currency": "₽",
         "unit": "мешок"
+      },
+      "quantity": {
+        "min_count": 1,
+        "max_count": 32,
+        "counts": 1,
+        "step_count": 1,
+        "default_count": 1
       }
     },
     {
@@ -132,6 +153,13 @@
         "value": 700,
         "currency": "₽",
         "unit": "лист"
+      },
+      "quantity": {
+        "min_count": 1,
+        "max_count": 32,
+        "counts": 1,
+        "step_count": 1,
+        "default_count": 1
       }
     },
     {
@@ -152,6 +180,13 @@
         "value": 1200,
         "currency": "₽",
         "unit": "рулон"
+      },
+      "quantity": {
+        "min_count": 1,
+        "max_count": 32,
+        "counts": 1,
+        "step_count": 6,
+        "default_count": 6
       }
     },
     {
@@ -172,6 +207,13 @@
         "value": 180,
         "currency": "₽",
         "unit": "мешок"
+      },
+      "quantity": {
+        "min_count": 1,
+        "max_count": 32,
+        "counts": 1,
+        "step_count": 1,
+        "default_count": 1
       }
     },
     {
@@ -192,6 +234,13 @@
         "value": 600,
         "currency": "₽",
         "unit": "лист"
+      },
+      "quantity": {
+        "min_count": 1,
+        "max_count": 32,
+        "counts": 1,
+        "step_count": 1,
+        "default_count": 2
       }
     },
     {
@@ -212,6 +261,13 @@
         "value": 80,
         "currency": "₽",
         "unit": "метр"
+      },
+      "quantity": {
+        "min_count": 1,
+        "max_count": 32,
+        "counts": 1,
+        "step_count": 1,
+        "default_count": 1
       }
     },
     {
@@ -232,6 +288,13 @@
         "value": 50,
         "currency": "₽",
         "unit": "штука"
+      },
+      "quantity": {
+        "min_count": 1,
+        "max_count": 32,
+        "counts": 1,
+        "step_count": 1,
+        "default_count": 1
       }
     },
     {
@@ -252,6 +315,13 @@
         "value": 350,
         "currency": "₽",
         "unit": "мешок"
+      },
+      "quantity": {
+        "min_count": 1,
+        "max_count": 32,
+        "counts": 1,
+        "step_count": 1,
+        "default_count": 1
       }
     }
   ]

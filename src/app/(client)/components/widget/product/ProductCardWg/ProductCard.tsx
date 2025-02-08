@@ -6,12 +6,19 @@ import {IconsSvg} from "@/app/(client)/components/ui/IconsSvg/IconsSvg";
 import {colors} from "@/app/(client)/components/content/Layout/theme";
 import {BasketAdd} from "@/app/(client)/components/ui/basketAdd/BasketAdd";
 import {ProductCardProps} from "@/app/(client)/components/widget/product/types";
+import { Image } from 'antd';
+import {useBasketStore} from "@/stores/hooks/useBasketStore.ts";
+import {BasketParams, Product} from "@/common/types";
 
 export const ProductCard: React.FC<ProductCardProps> = ({ ...props }) => {
-    const onBasket = (val: any) => {
-      console.log('onBasket',val);
+
+    const { setBasket } = useBasketStore();
+
+    const onBasket = (product: Product, counts: number) => {
+        setBasket({product, counts});
     }
     const tags = props.product.tags ?? [];
+
     return (
         <div className={styles.product_card}>
              <div className={styles.product_body}>
@@ -23,7 +30,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ ...props }) => {
                      <IconsSvg name={'favorite'} color={colors.colorPrimary} width={27} height={27} />
                  </div>
 
-                 <Link className={styles.images} href={`/product/${props.product.id}`}><img src={props.product.image_url} alt={props.product.title} /></Link>
+                 <Link className={styles.images} href={`/product/${props.product.id}`}>
+                     <Image
+                         preview={false}
+                         src={props.product.image_url}
+                         alt={props.product.title}
+                     />
+                 </Link>
 
                  <Link className={styles.images} href={`/product/${props.product.id}`}><h3>{props.product.title}</h3></Link>
 
@@ -39,7 +52,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ ...props }) => {
              </div>
              <div className={styles.product_footer}>
                 <div className={styles.price}>{props.product.price.value} {props.product.price.currency} / {props.product.price.unit}</div>
-                <BasketAdd onBasket={(val)=> onBasket(val)} />
+                <BasketAdd
+                    product={props.product}
+                    onBasket={(event, counts) => onBasket(event, counts)}
+                />
              </div>
         </div>
     );

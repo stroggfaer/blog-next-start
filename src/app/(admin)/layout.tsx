@@ -7,10 +7,8 @@ export const metadata: Metadata = {
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-
   // useLayoutEffect(() => {
   //
   // }, [])
-
   return (<div className={'admin-body'}>{children}</div>)
 }

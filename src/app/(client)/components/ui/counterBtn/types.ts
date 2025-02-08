@@ -1,9 +1,8 @@
 import {Product} from "@/common/types";
-export interface BasketAddProps {
+export interface CounterBtnProps {
     btnLoading?: boolean;
     disabled?: boolean;
-    onBasket?: (event: any, counts: number) => void;
-    onChange?: (event: any) => void;
+    onChange?: (value: any) => void;
     record?: any;
     product: Product;
 }

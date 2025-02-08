@@ -9,9 +9,13 @@ import { AxiosResponse } from 'axios';
 //     return response.data;
 // };
 export const getProducts = async (): Promise<Product[]> => {
-    const response: AxiosResponse<Product[]>  = await api.get('/products');
-    console.log('getProducts');
-    return response.data;
+    try {
+        const response: AxiosResponse<Product[]>  = await api.get('/products');
+        return response.data;
+    }catch (e) {
+        console.log('getProducts error', e);
+        throw Error;
+    }
 };
 
 // Получить продукт по ID
@@ -20,6 +24,6 @@ export const getProductById = async (id: string | undefined):Promise<Product | n
         const response: AxiosResponse<Product>  = await api.get(`/products/${id}`);
         return response.data as Product | null;
     } catch (e) {
-        throw e;
+        throw Error;
     }
 };
