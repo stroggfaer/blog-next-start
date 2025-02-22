@@ -5,7 +5,7 @@ import styles from "./style.module.scss";
 import {BasketAddProps} from "@/app/(client)/components/ui/basketAdd/types";
 import {CounterBtn} from "@/app/(client)/components/ui/counterBtn/CounterBtn.tsx";
 import {useBasketStore} from "@/stores/hooks/useBasketStore.ts";
-
+//
 export const BasketAdd: React.FC<BasketAddProps> = ({ ...props }) => {
     const { getBasketFind } = useBasketStore();
     const isBasket = getBasketFind(props.product.id);
